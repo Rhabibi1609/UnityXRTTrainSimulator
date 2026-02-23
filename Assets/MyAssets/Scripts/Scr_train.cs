@@ -12,7 +12,7 @@ public class Scr_train : MonoBehaviour
     public TextMeshProUGUI timer; // the timer text to use
     public Renderer hazard_indicator_renderer; // the renderer of the hazard indicator to show when train is passing
 
-    public float speed = 100f; // how far the train moves per second
+    public float speed = 30f; // how far the train moves per second
     public float time_wait = 10f; // how many seconds to wait between trains
 
     public float train_length = 16.5f*5; // how long the train is
