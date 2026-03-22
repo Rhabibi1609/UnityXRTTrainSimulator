@@ -1,9 +1,10 @@
-﻿# Train Simulator (see build instructions at the bottom)
+﻿# Train Simulator UNITY_NEW (see build instructions at the bottom)
 
 Latest Documentation Video:
 
-NO DOCUMENTATION VIDEO ON CURRENT BRANCH
-(Latest documentation video is on Unity\_stable branch and is 2 versions behind)
+[Documentation #2](https://youtu.be/9V9BPrxdGQA)
+
+(Latest documentation video is up to date)
 
 
 
@@ -18,7 +19,7 @@ Current features:
 
 
 
-* New CC0 train and asset models
+* New CC0 train and asset models (https://quaternius.com/index.html)
 * You can place and modify tracks for trains to run on
 * A train will go down a track at configurable intervals and speed
 * There is a timer visible on the track showing how long until the next train
