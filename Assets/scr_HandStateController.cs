@@ -7,9 +7,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class scr_HandStateController : MonoBehaviour
 {
 
-    [SerializeField] private XRRayInteractor TeleportInteractor;
-    [SerializeField] private ActionBasedController TeleportControllerActionBased;
-    [SerializeField] private XRRayInteractor MainInteractor;
+    [SerializeField] private UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor TeleportInteractor;
+    [SerializeField] private UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor MainInteractor;
     [SerializeField] private InputActionReference TeleportInputActionReference;
 
     private void OnEnable()
@@ -25,7 +24,6 @@ public class scr_HandStateController : MonoBehaviour
         if (MainInteractor.hasSelection) { return; }
 
         TeleportInteractor.enabled = true;
-        TeleportControllerActionBased.enableInputActions = true;
 
         MainInteractor.enabled = false;
     }
@@ -34,7 +32,6 @@ public class scr_HandStateController : MonoBehaviour
     private void TeleportCancel()
     {
         TeleportInteractor.enabled = false;
-        TeleportControllerActionBased.enableInputActions = false;
 
         MainInteractor.enabled = true;
     }
