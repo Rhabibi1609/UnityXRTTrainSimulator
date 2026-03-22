@@ -1,19 +1,25 @@
-﻿# Train Simulator (see build instructions at the bottom)
+﻿# Train Simulator UNITY_NEW (see build instructions at the bottom)
 
 Latest Documentation Video:
 
-[https://youtu.be/kW29mfmC0UA](url) - Documentation #1
-(Documentation video is 1 version behind)
+[Documentation #2](https://youtu.be/9V9BPrxdGQA)
+
+(Latest documentation video is up to date)
 
 
 
 Built on UnityXRT - Intended for use with a VR headset
+Unity version: 6000.3.11f1
 
 Current features:
 
 
 
-* Cool train model
+* Updated to newer Unity Versions!
+
+
+
+* New CC0 train and asset models (https://quaternius.com/index.html)
 * You can place and modify tracks for trains to run on
 * A train will go down a track at configurable intervals and speed
 * There is a timer visible on the track showing how long until the next train
@@ -25,24 +31,29 @@ Current features:
 
 
 
-* grassy field and shrubbery
+* 3d grassy field and terrain
+* Train stations
 * two trains with offset timings
 * flashing indicator when train passing
 
 
 
 
+
 \\/   OPEN / BUILD instructions   \\/
 
-(NOTE: this project uses an older version of Unity for TOS reasons, do not commit with a more recent build of Unity)
-Install Unity 2021.3.19f1 for your OS: [https://unity.com/releases/editor/whats-new/2021.3.19f1](url)
+(NOTE: this branch uses a newer version of Unity and requires a license if revenue exceeds $100,000)
+Install Unity 6000.3.11f1 for your OS: [https://unity.com/releases/editor/whats-new/6000.3.11f1](url)
 
 Insure you select the correct Build dependencies for your platform:
 (For windows, get Windows Build Support, IL2CPP, Windows IL2CPP toolchain) (you can ignore if you don't need to build or you already have them)
 
 Download the project folder or use git fetch
-Run Unity -> Open Project -> select the project for this github
+Run Unity -> Open Project -> select the project for this GitHub
 
 You can click the play button in the top center to test with VR equipment or observe the SCENE or GAME views (top left)
 
-To build, press ctrl+b and build the project (if you plan on pushing to this repo, put the exe in a seperate folder or an ignored folder like "build")
+(Make sure you have the Demo Scene open when testing: bottom right -> Scenes -> "VRTrainSimulator")
+
+To build, press ctrl+b and build the project (if you plan on pushing to this repo, put the exe in a separate folder or an ignored folder like "build")
+
