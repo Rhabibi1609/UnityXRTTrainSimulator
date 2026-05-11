@@ -1,26 +1,27 @@
-# 🚂 Unity XR Train Simulator
+# Unity XR Train Simulator
 
 A **VR railroad safety training simulator** built with Unity and the XR Interaction Toolkit, designed for Meta Quest headsets. Features an AI-powered voice assistant with hands-free wake-word detection, speech-to-text, text-to-speech, and intelligent training content delivery — all within an immersive railroad crossing environment.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [Features](#-features)
-- [Architecture](#-architecture)
-- [Prerequisites](#-prerequisites)
-- [Getting Started](#-getting-started)
-- [API Keys Setup](#-api-keys-setup)
-- [Project Structure](#-project-structure)
-- [Script Reference](#-script-reference)
-- [Building & Deploying](#-building--deploying)
-- [Usage Guide](#-usage-guide)
-- [Troubleshooting](#-troubleshooting)
-- [License](#-license)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [API Keys Setup](#api-keys-setup)
+- [Project Structure](#project-structure)
+- [Script Reference](#script-reference)
+- [Building & Deploying](#building--deploying)
+- [Usage Guide](#usage-guide)
+- [Troubleshooting](#troubleshooting)
+- [Video Demo](#video-demo)
+- [License](#license)
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---------|-------------|
@@ -35,17 +36,17 @@ A **VR railroad safety training simulator** built with Unity and the XR Interact
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### System Overview
 
 ```mermaid
 graph TB
     subgraph VR["VR Environment - Unity"]
-        Train["🚂 Train Simulation<br/>Scr_train.cs"]
-        UI["📺 Subtitle Panel + Page Indicator"]
-        Audio["🔊 Radio Speaker"]
-        Mic["🎤 Microphone Input"]
+        Train["Train Simulation<br/>Scr_train.cs"]
+        UI["Subtitle Panel + Page Indicator"]
+        Audio["Radio Speaker"]
+        Mic["Microphone Input"]
     end
 
     subgraph Voice["Voice Pipeline"]
@@ -81,7 +82,7 @@ graph TB
 ```mermaid
 graph LR
     subgraph Stage1["Stage 1"]
-        A["🎤 Raw Audio<br/>1280 samples<br/>80ms chunks"]
+        A["Raw Audio<br/>1280 samples<br/>80ms chunks"]
         B["Mel Spectrogram<br/>ONNX Model"]
     end
 
@@ -96,8 +97,8 @@ graph LR
     end
 
     G{"p >= threshold?"}
-    H["🎯 Wake Word<br/>Detected!"]
-    I["❌ Not detected<br/>Back to IDLE"]
+    H["Wake Word<br/>Detected!"]
+    I["Not detected<br/>Back to IDLE"]
 
     A --> B --> C --> D --> E --> F --> G
     G -->|Yes| H
@@ -137,7 +138,7 @@ stateDiagram-v2
 
 ---
 
-## 📦 Prerequisites
+## Prerequisites
 
 | Requirement | Version |
 |-------------|---------|
@@ -152,7 +153,7 @@ stateDiagram-v2
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -191,7 +192,7 @@ Open **Window > Package Manager** and ensure these are installed:
 
 ---
 
-## 🔑 API Keys Setup
+## API Keys Setup
 
 This project requires **two API keys** that must be set via the **Unity Inspector** (never hardcode them in scripts).
 
@@ -200,7 +201,7 @@ This project requires **two API keys** that must be set via the **Unity Inspecto
 | Key | Purpose | Where to Get It |
 |-----|---------|-----------------|
 | **Backend API Key** | Authenticates with your `/vrai` training content server | Your backend admin panel |
-| **Deepgram API Key** | Powers speech-to-text (Nova 3) and text-to-speech (Aura 2) | [console.deepgram.com](https://console.deepgram.com) |
+| **Deepgram API Key** | Powers speech-to-text (Nova 3) and text-to-speech (Aura 2) | [console.deepgram.com/project](https://console.deepgram.com/project) |
 
 ### How to Set Keys
 
@@ -220,18 +221,22 @@ This project requires **two API keys** that must be set via the **Unity Inspecto
 5. Update the **Server URL** to point to your backend server
 6. **Save the scene** (`Ctrl+S`)
 
-> **⚠️ Important:** These values are serialized into the Unity scene file. If you make the repo public, the scene file will contain your keys. For production, consider loading keys from environment variables or a config file not tracked by git.
+> **Important:** These values are serialized into the Unity scene file. If you make the repo public, the scene file will contain your keys. For production, consider loading keys from environment variables or a config file not tracked by git.
 
 ### Getting a Deepgram API Key
 
-1. Sign up at [console.deepgram.com](https://console.deepgram.com)
-2. Create a new project
-3. Go to **API Keys** > **Create Key**
-4. Copy the key and paste it into the Unity Inspector
+1. Log in or sign up at the [Deepgram Console](https://console.deepgram.com/project)
+2. Select your project or create a new one.
+3. In the left navigation menu, click on **API Keys**.
+4. Click the **Create a New API Key** button.
+5. Give your key a name (e.g., "Unity XR Train Simulator") and select the appropriate scopes/permissions.
+6. Click **Create Key**.
+7. **Copy the generated key immediately**, as it will not be shown again.
+8. Paste it into the `Deepgram Api Key` field in the Unity Inspector for the `VRVoiceHandler` component as described above.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 UnityXRTTrainSimulator/
@@ -269,7 +274,7 @@ UnityXRTTrainSimulator/
 
 ---
 
-## 📜 Script Reference
+## Script Reference
 
 ### `VRVoiceHandler.cs` — Voice Assistant Orchestrator
 
@@ -296,7 +301,7 @@ The central controller that ties together recording, cloud APIs, and UI.
 
 | Method | Description |
 |--------|-------------|
-| `ProcessVoiceQuery()` | Full pipeline: STT → Backend → split lines → TTS |
+| `ProcessVoiceQuery()` | Full pipeline: STT -> Backend -> split lines -> TTS |
 | `CallDeepgramSTT()` | Sends WAV audio to Deepgram Nova 3 for transcription |
 | `CallVraiEndpoint()` | Sends transcribed text to backend `/vrai` endpoint |
 | `BeginLineCycling()` | Starts paginated response playback with parallel prefetch |
@@ -368,7 +373,7 @@ Static utility class for converting between Unity AudioClips and WAV byte arrays
 
 ---
 
-## 🔨 Building & Deploying
+## Building & Deploying
 
 ### Build for Meta Quest
 
@@ -394,7 +399,7 @@ adb logcat -s Unity | grep "\[WakeWord\]"
 
 ---
 
-## 🎮 Usage Guide
+## Usage Guide
 
 ### VR Controls
 
@@ -422,7 +427,7 @@ adb logcat -s Unity | grep "\[WakeWord\]"
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -435,3 +440,8 @@ adb logcat -s Unity | grep "\[WakeWord\]"
 | Build fails on Android | Ensure Scripting Backend is IL2CPP, Min API Level is 32, and ARM64 is the target architecture. |
 
 ---
+
+## Video Demo
+
+https://youtu.be/IdYYTH3swi4?si=msO9UYnb56_K5kXT
+
